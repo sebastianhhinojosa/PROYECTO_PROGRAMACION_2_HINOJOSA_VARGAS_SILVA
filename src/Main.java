@@ -3,21 +3,27 @@ import java.util.*;
 public class Main {
 
     private static final Scanner sc = new Scanner(System.in);
-    private static final List<PersonaSituacionCalle> personas     = new ArrayList<>();
+    private static final List<PersonaSituacionCalle> personas      = new ArrayList<>();
     private static final List<Institucion>           instituciones = new ArrayList<>();
 
-    public static void main(String[] args) {
+    /* ---------- NUEVO: lector seguro de enteros ---------- */
+    private static int leerEntero(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String linea = sc.nextLine().trim();
+            try {
+                return Integer.parseInt(linea);
+            } catch (NumberFormatException e) {
+                System.out.println("⚠ Error: debe ingresar un número entero.");
+            }
+        }
+    }
 
+    public static void main(String[] args) {
         int opcion;
         do {
             mostrarMenu();
-            while (!sc.hasNextInt()) {            // evita excepciones
-                System.out.print("Ingrese un número válido: ");
-                sc.next();
-            }
-            opcion = sc.nextInt();
-            sc.nextLine();                        // limpiar buffer
-
+            opcion = leerEntero("");   // se sobreescribió la lectura insegura
             switch (opcion) {
                 case 1 -> registrarPersona();
                 case 2 -> registrarAtencion();
@@ -32,6 +38,7 @@ public class Main {
         sc.close();
     }
 
+    /* ---------- Menú ---------- */
     private static void mostrarMenu() {
         System.out.println("\n--- SISTEMA DE REGISTRO DE PERSONAS EN SITUACIÓN DE CALLE ---");
         System.out.println("1. Registro de personas (R1)");
@@ -40,36 +47,32 @@ public class Main {
         System.out.println("4. Reportes y estadísticas (R4)");
         System.out.println("5. Localización de casos (R5)");
         System.out.println("6. Salir");
-        System.out.print("Seleccione una opción: ");
     }
 
     /* ---------- R1: Personas ---------- */
     private static void registrarPersona() {
+
+        System.out.print("Nombre: ");
+        String nombre = sc.nextLine();
+
+        int edad = leerEntero("Edad: ");
+
+        System.out.print("Género (Masculino/Femenino/Otro): ");
+        String genero = sc.nextLine();
+
+        System.out.print("Ubicación actual: ");
+        String ubicacion = sc.nextLine();
+
+        System.out.print("Estado de salud: ");
+        String estadoSalud = sc.nextLine();
+
         try {
-            System.out.print("Nombre: ");
-            String nombre = sc.nextLine();
-
-            System.out.print("Edad: ");
-            int edad = Integer.parseInt(sc.nextLine());
-
-            System.out.print("Género (Masculino/Femenino/Otro): ");
-            String genero = sc.nextLine();
-
-            System.out.print("Ubicación actual: ");
-            String ubicacion = sc.nextLine();
-
-            System.out.print("Estado de salud: ");
-            String estadoSalud = sc.nextLine();
-
             PersonaSituacionCalle p = new PersonaSituacionCalle(
                     personas.size() + 1, nombre, edad, genero,
                     ubicacion, estadoSalud, new Date()
             );
             personas.add(p);
             System.out.println("✔ Persona registrada con ID: " + p.id);
-
-        } catch (NumberFormatException e) {
-            System.out.println("Edad inválida.");
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -87,8 +90,7 @@ public class Main {
             return;
         }
 
-        System.out.print("ID de persona: ");
-        int idPersona = Integer.parseInt(sc.nextLine());
+        int idPersona = leerEntero("ID de persona: ");
         PersonaSituacionCalle persona = buscarPersona(idPersona);
         if (persona == null) {
             System.out.println("Persona no encontrada.");
@@ -98,8 +100,7 @@ public class Main {
         System.out.print("Tipo de atención brindada: ");
         String tipo = sc.nextLine();
 
-        System.out.print("ID de institución: ");
-        int idInst = Integer.parseInt(sc.nextLine());
+        int idInst = leerEntero("ID de institución: ");
         Institucion inst = buscarInstitucion(idInst);
         if (inst == null) {
             System.out.println("Institución no encontrada.");
@@ -132,7 +133,7 @@ public class Main {
         Institucion inst = new Institucion(instituciones.size() + 1, nombre, tipo, contacto);
         instituciones.add(inst);
 
-        System.out.println("✔ Institución registrada con ID: " + inst.getId());
+        System.out.println(" Institución registrada con ID: " + inst.getId());
     }
 
     /* ---------- R4: Reportes ---------- */
@@ -163,7 +164,6 @@ public class Main {
                 .filter(p -> p.id == id)
                 .findFirst().orElse(null);
     }
-
     private static Institucion buscarInstitucion(int id) {
         return instituciones.stream()
                 .filter(i -> i.getId() == id)
