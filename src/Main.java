@@ -1,3 +1,4 @@
+// Main.java
 import java.util.*;
 
 public class Main {
@@ -30,7 +31,6 @@ public class Main {
                 case 4 -> generarReporte();
                 case 5 -> mostrarLocalizaciones();
                 case 6 -> System.out.println("Gracias por usar el sistema.");
-                case 7 -> registrarRescatista();
                 default -> System.out.println("Opción inválida.");
             }
         } while (opcion != 6);
@@ -45,7 +45,6 @@ public class Main {
         System.out.println("4. Reportes y estadísticas (R4)");
         System.out.println("5. Localización de casos (R5)");
         System.out.println("6. Salir");
-        System.out.println("7. Registrar rescatista");
     }
 
     private static void registrarPersona() {
@@ -60,7 +59,7 @@ public class Main {
             System.out.print("Ciudad: ");
             ciudad = sc.nextLine();
             if (!UbicacionEcuador.ciudadValida(ciudad)) {
-                System.out.println(" Ciudad no reconocida. Ciudades válidas: " + UbicacionEcuador.getCiudades());
+                System.out.println("⚠ Ciudad no reconocida. Ciudades válidas: " + UbicacionEcuador.getCiudades());
             }
         } while (!UbicacionEcuador.ciudadValida(ciudad));
 
@@ -69,7 +68,7 @@ public class Main {
             System.out.print("Barrio: ");
             barrio = sc.nextLine();
             if (!UbicacionEcuador.barrioValido(ciudad, barrio)) {
-                System.out.println(" Barrio no válido para " + ciudad + ". Barrios válidos: " +
+                System.out.println("⚠ Barrio no válido para " + ciudad + ". Barrios válidos: " +
                         UbicacionEcuador.getBarrios(ciudad));
             }
         } while (!UbicacionEcuador.barrioValido(ciudad, barrio));
@@ -86,6 +85,12 @@ public class Main {
             System.out.println("Persona registrada con ID: " + p.id);
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
+        }
+
+        System.out.print("¿Desea registrar al rescatista que encontró a esta persona? (s/n): ");
+        String respuesta = sc.nextLine();
+        if (respuesta.equalsIgnoreCase("s")) {
+            registrarRescatista();
         }
     }
 
@@ -133,7 +138,7 @@ public class Main {
 
         Institucion inst = new Institucion(instituciones.size() + 1, nombre, tipo, contacto);
         instituciones.add(inst);
-        System.out.println(" Institución registrada con ID: " + inst.getId());
+        System.out.println("✔ Institución registrada con ID: " + inst.getId());
     }
 
     private static void generarReporte() {
@@ -176,7 +181,7 @@ public class Main {
             System.out.print("Ciudad: ");
             ciudad = sc.nextLine();
             if (!UbicacionEcuador.ciudadValida(ciudad)) {
-                System.out.println(" Ciudad no reconocida. Ciudades válidas: " + UbicacionEcuador.getCiudades());
+                System.out.println("⚠ Ciudad no reconocida. Ciudades válidas: " + UbicacionEcuador.getCiudades());
             }
         } while (!UbicacionEcuador.ciudadValida(ciudad));
 
@@ -185,7 +190,7 @@ public class Main {
             System.out.print("Barrio: ");
             barrio = sc.nextLine();
             if (!UbicacionEcuador.barrioValido(ciudad, barrio)) {
-                System.out.println(" Barrio no válido para " + ciudad + ". Barrios válidos: " +
+                System.out.println("⚠ Barrio no válido para " + ciudad + ". Barrios válidos: " +
                         UbicacionEcuador.getBarrios(ciudad));
             }
         } while (!UbicacionEcuador.barrioValido(ciudad, barrio));
@@ -207,7 +212,7 @@ public class Main {
                 ciudad + " - " + barrio, estadoSalud, idInstitucional, inst);
 
         rescatistas.add(r);
-        System.out.println(" Rescatista registrado exitosamente.");
+        System.out.println("✔ Rescatista registrado exitosamente.");
     }
 
     private static PersonaSituacionCalle buscarPersona(int id) {
