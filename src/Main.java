@@ -175,6 +175,7 @@ public class Main {
         String genero = sc.nextLine();
 
 
+
         String ciudad;
         do {
             System.out.print("Ciudad: ");
