@@ -7,7 +7,7 @@ public class Main {
     private static final List<Institucion>           instituciones = new ArrayList<>();
     private static final List<Rescatista>            rescatistas   = new ArrayList<>();
 
-    /* === utilidades === */
+
     private static int leerEntero(String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -20,7 +20,7 @@ public class Main {
         }
     }
 
-    /* === punto de entrada === */
+
     public static void main(String[] args) {
 
         configurarInstitucionesIniciales();
@@ -45,7 +45,6 @@ public class Main {
         sc.close();
     }
 
-    /* === configuración inicial === */
     private static void configurarInstitucionesIniciales() {
         System.out.println("--- CONFIGURACIÓN DE INSTITUCIONES ---");
         do {
@@ -69,7 +68,7 @@ public class Main {
         } while (sc.nextLine().equalsIgnoreCase("s"));
     }
 
-    /* === menú principal === */
+
     private static void mostrarMenuPrincipal() {
         System.out.println("\n--- MENU PRINCIPAL DEL SISTEMA ---");
         System.out.println("1. Registrar persona en situación de calle");
@@ -81,7 +80,7 @@ public class Main {
         System.out.println("7. Salir");
     }
 
-    /* === R1: personas === */
+
     private static void registrarPersona() {
 
         System.out.print("Nombre: ");
@@ -122,7 +121,7 @@ public class Main {
         if (sc.nextLine().equalsIgnoreCase("s")) registrarRescatista();
     }
 
-    /* === R2: atenciones === */
+
     private static void registrarAtencion() {
         if (personas.isEmpty() || instituciones.isEmpty()) {
             System.out.println("Debe haber al menos una persona y una institución.");
@@ -149,7 +148,6 @@ public class Main {
         System.out.println("✔ Atención registrada.");
     }
 
-    /* === R3: instituciones === */
     private static void registrarInstitucion() {
         System.out.print("Nombre de la institución: ");
         String nombre = sc.nextLine();
@@ -163,7 +161,7 @@ public class Main {
         System.out.println("✔ Institución registrada con ID: " + inst.getId());
     }
 
-    /* === R4: rescatistas === */
+
     private static void registrarRescatista() {
         if (instituciones.isEmpty()) {
             System.out.println("Primero debe haber al menos una institución.");
@@ -176,7 +174,7 @@ public class Main {
         System.out.print("Género: ");
         String genero = sc.nextLine();
 
-        // validar ciudad y barrio
+
         String ciudad;
         do {
             System.out.print("Ciudad: ");
@@ -229,14 +227,13 @@ public class Main {
     }
 
 
-    /* === R6: localizaciones === */
     private static void mostrarLocalizaciones() {
         System.out.println("\n--- Localización de casos ---");
         personas.forEach(p -> System.out.printf("ID:%d | %s -> %s%n", p.id, p.nombre, p.ubicacion));
 
     }
 
-    /* === auxiliares === */
+
     private static PersonaSituacionCalle buscarPersona(int id) {
         return personas.stream().filter(p -> p.id == id).findFirst().orElse(null);
     }
