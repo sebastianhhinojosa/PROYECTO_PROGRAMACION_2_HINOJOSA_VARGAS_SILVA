@@ -62,7 +62,7 @@ public class Main {
                 personas.size() + 1, nombre, edad, genero, ubicacion, estadoSalud, new Date()
         );
         personas.add(persona);
-        System.out.println("✔ Persona registrada con ID: " + persona.id);
+        System.out.println(" Persona registrada con ID: " + persona.id);
     }
 
     // R2: Registro de atención
@@ -76,27 +76,24 @@ public class Main {
         int idPersona = sc.nextInt(); sc.nextLine();
         PersonaSituacionCalle persona = buscarPersona(idPersona);
         if (persona == null) {
-            System.out.println("❌ Persona no encontrada.");
+            System.out.println(" Persona no encontrada.");
             return;
         }
 
         System.out.print("Tipo de atención brindada: ");
         String tipo = sc.nextLine();
-        System.out.print("Nombre de la persona encargada del seguimiento: ");
-        String encargado = sc.nextLine();
         System.out.print("ID de institución que ayudó: ");
         int idInst = sc.nextInt(); sc.nextLine();
         Institucion inst = buscarInstitucion(idInst);
         if (inst == null) {
-            System.out.println("❌ Institución no encontrada.");
+            System.out.println(" Institución no encontrada.");
             return;
         }
 
-        Atencion atencion = new Atencion(persona.getHistorial().size() + 1, tipo, new Date(), inst, encargado);
+        Atencion atencion = new Atencion(persona.getHistorial().size() + 1, tipo, new Date(), inst);
         persona.agregarAtencion(atencion);
-        System.out.println("✔ Atención registrada correctamente.");
+        System.out.println(" Atención registrada correctamente.");
     }
-
 
     // R3: Gestión de instituciones
     private static void registrarInstitucion() {
