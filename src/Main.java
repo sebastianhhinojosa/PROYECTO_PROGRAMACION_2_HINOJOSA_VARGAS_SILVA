@@ -33,8 +33,8 @@ public class Main {
             switch (opcion) {
                 case 1 -> registrarPersona();
                 case 2 -> registrarAtencion();
-                case 3 -> registrarInstitucion();          // permitir más instituciones luego
-                case 4 -> registrarRescatista();           // permitir más rescatistas luego
+                case 3 -> registrarInstitucion();
+                case 4 -> registrarRescatista();
                 case 5 -> generarReporte();
                 case 6 -> mostrarLocalizaciones();
                 case 7 -> System.out.println("Gracias por usar el sistema.");
@@ -44,6 +44,7 @@ public class Main {
 
         sc.close();
     }
+
 
     private static void configurarInstitucionesIniciales() {
         System.out.println("--- CONFIGURACIÓN DE INSTITUCIONES ---");
@@ -80,7 +81,6 @@ public class Main {
         System.out.println("7. Salir");
     }
 
-
     private static void registrarPersona() {
 
         System.out.print("Nombre: ");
@@ -88,14 +88,12 @@ public class Main {
         int edad = leerEntero("Edad: ");
         System.out.print("Género (Masculino/Femenino/Otro): ");
         String genero = sc.nextLine();
-
-        // validar ciudad y barrio
         String ciudad;
         do {
             System.out.print("Ciudad: ");
             ciudad = sc.nextLine();
             if (!UbicacionEcuador.ciudadValida(ciudad))
-                System.out.println("⚠ Ciudad no reconocida. Válidas: " + UbicacionEcuador.getCiudades());
+                System.out.println("Ciudad no reconocida. Válidas: " + UbicacionEcuador.getCiudades());
         } while (!UbicacionEcuador.ciudadValida(ciudad));
 
         String barrio;
@@ -103,7 +101,7 @@ public class Main {
             System.out.print("Barrio: ");
             barrio = sc.nextLine();
             if (!UbicacionEcuador.barrioValido(ciudad, barrio))
-                System.out.println("⚠ Barrio no válido. Válidos: " + UbicacionEcuador.getBarrios(ciudad));
+                System.out.println(" Barrio no válido. Válidos: " + UbicacionEcuador.getBarrios(ciudad));
         } while (!UbicacionEcuador.barrioValido(ciudad, barrio));
 
         System.out.print("Estado de salud: ");
@@ -114,9 +112,9 @@ public class Main {
                 ciudad + " - " + barrio, estadoSalud, new Date()
         );
         personas.add(p);
-        System.out.println("✔ Persona registrada con ID: " + p.id);
+        System.out.println(" Persona registrada con ID: " + p.id);
 
-        // ¿registrar rescatista asociado?
+
         System.out.print("¿Registrar al rescatista que la encontró? (s/n): ");
         if (sc.nextLine().equalsIgnoreCase("s")) registrarRescatista();
     }
@@ -145,8 +143,9 @@ public class Main {
         Atencion at = new Atencion(persona.getHistorial().size() + 1,
                 tipo, new Date(), inst, encargado);
         persona.agregarAtencion(at);
-        System.out.println("✔ Atención registrada.");
+        System.out.println(" Atención registrada.");
     }
+
 
     private static void registrarInstitucion() {
         System.out.print("Nombre de la institución: ");
@@ -158,7 +157,7 @@ public class Main {
 
         Institucion inst = new Institucion(instituciones.size() + 1, nombre, tipo, contacto);
         instituciones.add(inst);
-        System.out.println("✔ Institución registrada con ID: " + inst.getId());
+        System.out.println(" Institución registrada con ID: " + inst.getId());
     }
 
 
@@ -174,14 +173,12 @@ public class Main {
         System.out.print("Género: ");
         String genero = sc.nextLine();
 
-
-
         String ciudad;
         do {
             System.out.print("Ciudad: ");
             ciudad = sc.nextLine();
             if (!UbicacionEcuador.ciudadValida(ciudad))
-                System.out.println("⚠ Ciudad no reconocida. Válidas: " + UbicacionEcuador.getCiudades());
+                System.out.println(" Ciudad no reconocida. Válidas: " + UbicacionEcuador.getCiudades());
         } while (!UbicacionEcuador.ciudadValida(ciudad));
 
         String barrio;
@@ -189,7 +186,7 @@ public class Main {
             System.out.print("Barrio: ");
             barrio = sc.nextLine();
             if (!UbicacionEcuador.barrioValido(ciudad, barrio))
-                System.out.println("⚠ Barrio no válido. Válidos: " + UbicacionEcuador.getBarrios(ciudad));
+                System.out.println(" Barrio no válido. Válidos: " + UbicacionEcuador.getBarrios(ciudad));
         } while (!UbicacionEcuador.barrioValido(ciudad, barrio));
 
         System.out.print("Estado de salud: ");
@@ -206,7 +203,7 @@ public class Main {
                 ciudad + " - " + barrio, estadoSalud,
                 idInstitucional, inst);
         rescatistas.add(r);
-        System.out.println("✔ Rescatista registrado.");
+        System.out.println(" Rescatista registrado.");
     }
 
     private static void generarReporte() {
@@ -233,7 +230,6 @@ public class Main {
         personas.forEach(p -> System.out.printf("ID:%d | %s -> %s%n", p.id, p.nombre, p.ubicacion));
 
     }
-
 
     private static PersonaSituacionCalle buscarPersona(int id) {
         return personas.stream().filter(p -> p.id == id).findFirst().orElse(null);
