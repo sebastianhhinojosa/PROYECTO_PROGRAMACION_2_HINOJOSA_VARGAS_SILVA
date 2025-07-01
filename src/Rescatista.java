@@ -1,5 +1,5 @@
 public class Rescatista extends Persona {
-    private final String idInstitucional;   // ID propio dentro de la institución
+    private final String idInstitucional;
     private final Institucion institucion;
 
     public Rescatista(int id, String nombre, int edad, String genero,
