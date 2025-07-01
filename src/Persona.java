@@ -9,7 +9,7 @@ public class Persona {
     public Persona(int id, String nombre, int edad, String genero,
                    String ubicacion, String estadoSalud) {
 
-        this.id = (id > 0) ? id : 0;
+        this.id = Math.max(id, 0);
         if (id <= 0) {
             System.out.println(" Advertencia: ID inválido, se estableció como 0.");
         }
