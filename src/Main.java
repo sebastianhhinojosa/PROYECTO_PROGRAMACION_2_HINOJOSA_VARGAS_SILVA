@@ -6,7 +6,6 @@ public class Main {
     private static final List<PersonaSituacionCalle> personas      = new ArrayList<>();
     private static final List<Institucion>           instituciones = new ArrayList<>();
 
-    /* ---------- NUEVO: lector seguro de enteros ---------- */
     private static int leerEntero(String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -38,7 +37,6 @@ public class Main {
         sc.close();
     }
 
-    /* ---------- Menú ---------- */
     private static void mostrarMenu() {
         System.out.println("\n--- SISTEMA DE REGISTRO DE PERSONAS EN SITUACIÓN DE CALLE ---");
         System.out.println("1. Registro de personas (R1)");
@@ -49,7 +47,6 @@ public class Main {
         System.out.println("6. Salir");
     }
 
-    /* ---------- R1: Personas ---------- */
     private static void registrarPersona() {
 
         System.out.print("Nombre: ");
@@ -78,7 +75,6 @@ public class Main {
         }
     }
 
-    /* ---------- R2: Atención ---------- */
     private static void registrarAtencion() {
 
         if (personas.isEmpty()) {
@@ -119,7 +115,6 @@ public class Main {
         System.out.println("Atención registrada.");
     }
 
-    /* ---------- R3: Instituciones ---------- */
     private static void registrarInstitucion() {
         System.out.print("Nombre de la institución: ");
         String nombre = sc.nextLine();
@@ -136,7 +131,6 @@ public class Main {
         System.out.println(" Institución registrada con ID: " + inst.getId());
     }
 
-    /* ---------- R4: Reportes ---------- */
     private static void generarReporte() {
         System.out.println("\n--- Reporte general ---");
 
@@ -150,7 +144,6 @@ public class Main {
         instituciones.forEach(i -> System.out.printf("%d | %s%n", i.getId(), i.getNombre()));
     }
 
-    /* ---------- R5: Localizaciones ---------- */
     private static void mostrarLocalizaciones() {
         System.out.println("\n--- Localización de casos ---");
         personas.forEach(p ->
@@ -158,7 +151,6 @@ public class Main {
         );
     }
 
-    /* ---------- Auxiliares ---------- */
     private static PersonaSituacionCalle buscarPersona(int id) {
         return personas.stream()
                 .filter(p -> p.id == id)
