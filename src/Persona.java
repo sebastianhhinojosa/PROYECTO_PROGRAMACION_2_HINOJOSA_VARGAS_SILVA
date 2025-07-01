@@ -26,7 +26,6 @@ public class Persona {
         this.estadoSalud = estadoSalud;
     }
 
-    /* setters / getters opcionales */
     public void actualizarUbicacion(String nuevaUbicacion) {
         if (nuevaUbicacion == null || nuevaUbicacion.isBlank()) {
             System.out.println("La nueva ubicación no puede estar vacía.");

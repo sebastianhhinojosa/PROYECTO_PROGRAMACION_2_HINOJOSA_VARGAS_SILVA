@@ -133,7 +133,7 @@ public class Main {
         Institucion inst = new Institucion(instituciones.size() + 1, nombre, tipo, contacto);
         instituciones.add(inst);
 
-        System.out.println(" Institución registrada con ID: " + inst.getId());
+        System.out.println("✔ Institución registrada con ID: " + inst.getId());
     }
 
     /* ---------- R4: Reportes ---------- */
@@ -164,6 +164,7 @@ public class Main {
                 .filter(p -> p.id == id)
                 .findFirst().orElse(null);
     }
+
     private static Institucion buscarInstitucion(int id) {
         return instituciones.stream()
                 .filter(i -> i.getId() == id)
