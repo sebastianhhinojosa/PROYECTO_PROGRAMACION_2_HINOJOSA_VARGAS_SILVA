@@ -19,6 +19,7 @@ public class Main {
             opcion = sc.nextInt();
             sc.nextLine(); // limpiar buffer
 
+
             switch (opcion) {
                 case 1:
                     registrarPersona();
