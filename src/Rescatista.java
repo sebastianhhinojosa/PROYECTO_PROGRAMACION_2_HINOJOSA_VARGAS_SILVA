@@ -9,17 +9,15 @@ public class Rescatista extends Persona {
         super(id, nombre, edad, genero, ubicacion, estadoSalud);
 
         if (idInstitucional == null || idInstitucional.isBlank()) {
-            System.out.println("Advertencia: ID institucional vacío.");
+            System.out.println("⚠ Advertencia: ID institucional vacío.");
             this.idInstitucional = "N/A";
-        } else {
-            this.idInstitucional = idInstitucional;
-        }
+        } else this.idInstitucional = idInstitucional;
 
         this.institucion = institucion;
     }
 
-    public String getIdInstitucional() { return idInstitucional; }
-    public Institucion getInstitucion() { return institucion; }
+    public String     getIdInstitucional() { return idInstitucional; }
+    public Institucion getInstitucion()    { return institucion; }
 
     @Override
     public String toString() {
