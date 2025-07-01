@@ -12,20 +12,15 @@ public class UbicacionEcuador {
         ubicaciones.put("Ambato", List.of("Huachi", "Atocha", "Ficoa"));
     }
 
-    public static List<String> getCiudades() {
-        return new ArrayList<>(ubicaciones.keySet());
-    }
+    public static List<String> getCiudades() { return new ArrayList<>(ubicaciones.keySet()); }
 
     public static List<String> getBarrios(String ciudad) {
         return ubicaciones.getOrDefault(ciudad, Collections.emptyList());
     }
 
-    public static boolean ciudadValida(String ciudad) {
-        return ubicaciones.containsKey(ciudad);
-    }
+    public static boolean ciudadValida(String ciudad) { return ubicaciones.containsKey(ciudad); }
 
     public static boolean barrioValido(String ciudad, String barrio) {
-        return ubicaciones.containsKey(ciudad) &&
-                ubicaciones.get(ciudad).contains(barrio);
+        return ciudadValida(ciudad) && ubicaciones.get(ciudad).contains(barrio);
     }
 }
