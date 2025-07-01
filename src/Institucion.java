@@ -11,14 +11,11 @@ public class Institucion {
         this.contacto = contacto;
     }
 
-    public int getId()            { return id; }
-    public String getNombre()     { return nombre; }
-    public String getTipo()       { return tipo; }
-    public String getContacto()   { return contacto; }
+    public int getId()          { return id; }
+    public String getNombre()   { return nombre; }
+    public String getTipo()     { return tipo; }
+    public String getContacto() { return contacto; }
 
     @Override
-    public String toString() {
-        return id + " - " + nombre + " (" + tipo + ")";
-    }
+    public String toString() { return id + " - " + nombre + " (" + tipo + ")"; }
 }
-

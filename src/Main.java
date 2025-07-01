@@ -18,6 +18,7 @@ public class Main {
         }
     }
 
+
     public static void main(String[] args) {
         int opcion;
         do {
@@ -58,7 +59,7 @@ public class Main {
             System.out.print("Ciudad: ");
             ciudad = sc.nextLine();
             if (!UbicacionEcuador.ciudadValida(ciudad)) {
-                System.out.println("⚠ Ciudad no reconocida. Ciudades válidas: " + UbicacionEcuador.getCiudades());
+                System.out.println(" Ciudad no reconocida. Ciudades válidas: " + UbicacionEcuador.getCiudades());
             }
         } while (!UbicacionEcuador.ciudadValida(ciudad));
 
@@ -67,7 +68,7 @@ public class Main {
             System.out.print("Barrio: ");
             barrio = sc.nextLine();
             if (!UbicacionEcuador.barrioValido(ciudad, barrio)) {
-                System.out.println("⚠ Barrio no válido para " + ciudad + ". Barrios válidos: " +
+                System.out.println(" Barrio no válido para " + ciudad + ". Barrios válidos: " +
                         UbicacionEcuador.getBarrios(ciudad));
             }
         } while (!UbicacionEcuador.barrioValido(ciudad, barrio));
@@ -180,7 +181,7 @@ public class Main {
             System.out.print("Ciudad: ");
             ciudad = sc.nextLine();
             if (!UbicacionEcuador.ciudadValida(ciudad)) {
-                System.out.println("⚠ Ciudad no reconocida. Ciudades válidas: " + UbicacionEcuador.getCiudades());
+                System.out.println(" Ciudad no reconocida. Ciudades válidas: " + UbicacionEcuador.getCiudades());
             }
         } while (!UbicacionEcuador.ciudadValida(ciudad));
 
@@ -211,7 +212,7 @@ public class Main {
                 ciudad + " - " + barrio, estadoSalud, idInstitucional, inst);
 
         rescatistas.add(r);
-        System.out.println("✔ Rescatista registrado exitosamente.");
+        System.out.println(" Rescatista registrado exitosamente.");
     }
 
     private static PersonaSituacionCalle buscarPersona(int id) {

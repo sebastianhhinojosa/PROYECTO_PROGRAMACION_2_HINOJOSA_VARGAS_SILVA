@@ -10,23 +10,17 @@ public class Persona {
                    String ubicacion, String estadoSalud) {
 
         this.id = Math.max(id, 0);
-        if (id <= 0) {
-            System.out.println(" Advertencia: ID inválido, se estableció como 0.");
-        }
+        if (id <= 0) System.out.println(" Advertencia: ID inválido, se estableció como 0.");
 
         if (nombre == null || nombre.isBlank()) {
             System.out.println(" Advertencia: Nombre vacío.");
             this.nombre = "Sin nombre";
-        } else {
-            this.nombre = nombre;
-        }
+        } else this.nombre = nombre;
 
         if (edad < 0 || edad > 120) {
             System.out.println(" Advertencia: Edad fuera de rango.");
             this.edad = 0;
-        } else {
-            this.edad = edad;
-        }
+        } else this.edad = edad;
 
         if (genero == null ||
                 (!genero.equalsIgnoreCase("Masculino") &&
@@ -34,23 +28,17 @@ public class Persona {
                         !genero.equalsIgnoreCase("Otro"))) {
             System.out.println("⚠ Advertencia: Género no válido. Se usará 'Otro'.");
             this.genero = "Otro";
-        } else {
-            this.genero = genero;
-        }
+        } else this.genero = genero;
 
         if (ubicacion == null || ubicacion.isBlank()) {
             System.out.println(" Advertencia: Ubicación vacía.");
             this.ubicacion = "Desconocida";
-        } else {
-            this.ubicacion = ubicacion;
-        }
+        } else this.ubicacion = ubicacion;
 
         if (estadoSalud == null || estadoSalud.isBlank()) {
             System.out.println(" Advertencia: Estado de salud vacío.");
             this.estadoSalud = "No especificado";
-        } else {
-            this.estadoSalud = estadoSalud;
-        }
+        } else this.estadoSalud = estadoSalud;
     }
 
     public void actualizarUbicacion(String nuevaUbicacion) {
