@@ -16,11 +16,11 @@ public class Atencion {
         this.encargadoSeguimiento = encargadoSeguimiento;
     }
 
-    public int getId()                     { return id; }
-    public String getTipo()                { return tipo; }
-    public Date getFecha()                 { return fecha; }
-    public Institucion getInstitucion()    { return institucion; }
-    public String getEncargadoSeguimiento(){ return encargadoSeguimiento; }
+    public int          getId()                  { return id; }
+    public String       getTipo()                { return tipo; }
+    public Date         getFecha()               { return fecha; }
+    public Institucion  getInstitucion()         { return institucion; }
+    public String       getEncargadoSeguimiento(){ return encargadoSeguimiento; }
 
     @Override
     public String toString() {
