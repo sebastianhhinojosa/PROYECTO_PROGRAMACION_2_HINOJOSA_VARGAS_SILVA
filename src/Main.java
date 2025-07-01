@@ -82,6 +82,8 @@ public class Main {
 
         System.out.print("Tipo de atención brindada: ");
         String tipo = sc.nextLine();
+        System.out.print("Nombre de la persona encargada del seguimiento: ");
+        String encargado = sc.nextLine();
         System.out.print("ID de institución que ayudó: ");
         int idInst = sc.nextInt(); sc.nextLine();
         Institucion inst = buscarInstitucion(idInst);
@@ -90,10 +92,11 @@ public class Main {
             return;
         }
 
-        Atencion atencion = new Atencion(persona.getHistorial().size() + 1, tipo, new Date(), inst);
+        Atencion atencion = new Atencion(persona.getHistorial().size() + 1, tipo, new Date(), inst, encargado);
         persona.agregarAtencion(atencion);
         System.out.println("✔ Atención registrada correctamente.");
     }
+
 
     // R3: Gestión de instituciones
     private static void registrarInstitucion() {
