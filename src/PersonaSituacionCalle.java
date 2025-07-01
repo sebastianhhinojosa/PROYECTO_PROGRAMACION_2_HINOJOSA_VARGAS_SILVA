@@ -3,20 +3,17 @@ import java.util.Date;
 import java.util.List;
 
 public class PersonaSituacionCalle extends Persona {
-    private Date fechaDeteccion;
-    private List<Atencion> historial;
 
-    public PersonaSituacionCalle(int id, String nombre, int edad, String genero, String ubicacion, String estadoSalud, Date fechaDeteccion){
-        super(id, nombre, edad, genero, ubicacion,estadoSalud);
+    private final Date fechaDeteccion;
+    private final List<Atencion> historial = new ArrayList<>();
+
+    public PersonaSituacionCalle(int id, String nombre, int edad, String genero,
+                                 String ubicacion, String estadoSalud, Date fechaDeteccion) {
+        super(id, nombre, edad, genero, ubicacion, estadoSalud);
         this.fechaDeteccion = fechaDeteccion;
-        this.historial = new ArrayList<>();
     }
 
-    public void agregarAtencion(Atencion atencion){
-        historial.add(atencion);
-    }
-    public List<Atencion> getHistorial(){
-        return historial;
-    }
-
+    public void agregarAtencion(Atencion a) { historial.add(a); }
+    public List<Atencion> getHistorial()    { return historial; }
+    public Date getFechaDeteccion()         { return fechaDeteccion; }
 }

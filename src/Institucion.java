@@ -1,8 +1,8 @@
 public class Institucion {
-    private int id;
-    private String nombre;
-    private String tipo;
-    private String contacto;
+    private final int id;
+    private final String nombre;
+    private final String tipo;
+    private final String contacto;
 
     public Institucion(int id, String nombre, String tipo, String contacto) {
         this.id = id;
@@ -10,11 +10,15 @@ public class Institucion {
         this.tipo = tipo;
         this.contacto = contacto;
     }
-    public String getNombre() {
-        return nombre;
-    }
-    public int getId() {
-        return id;
-    }
 
+    public int getId()            { return id; }
+    public String getNombre()     { return nombre; }
+    public String getTipo()       { return tipo; }
+    public String getContacto()   { return contacto; }
+
+    @Override
+    public String toString() {
+        return id + " - " + nombre + " (" + tipo + ")";
+    }
 }
+
