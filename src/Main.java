@@ -14,7 +14,7 @@ public class Main {
             try {
                 return Integer.parseInt(linea);
             } catch (NumberFormatException e) {
-                System.out.println("⚠ Error: debe ingresar un número entero.");
+                System.out.println(" Error: debe ingresar un número entero.");
             }
         }
     }
@@ -72,7 +72,7 @@ public class Main {
                     ubicacion, estadoSalud, new Date()
             );
             personas.add(p);
-            System.out.println("✔ Persona registrada con ID: " + p.id);
+            System.out.println("Persona registrada con ID: " + p.id);
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -116,7 +116,7 @@ public class Main {
         );
         persona.agregarAtencion(atencion);
 
-        System.out.println("✔ Atención registrada.");
+        System.out.println("Atención registrada.");
     }
 
     /* ---------- R3: Instituciones ---------- */
@@ -133,7 +133,7 @@ public class Main {
         Institucion inst = new Institucion(instituciones.size() + 1, nombre, tipo, contacto);
         instituciones.add(inst);
 
-        System.out.println("✔ Institución registrada con ID: " + inst.getId());
+        System.out.println(" Institución registrada con ID: " + inst.getId());
     }
 
     /* ---------- R4: Reportes ---------- */
@@ -164,7 +164,6 @@ public class Main {
                 .filter(p -> p.id == id)
                 .findFirst().orElse(null);
     }
-
     private static Institucion buscarInstitucion(int id) {
         return instituciones.stream()
                 .filter(i -> i.getId() == id)

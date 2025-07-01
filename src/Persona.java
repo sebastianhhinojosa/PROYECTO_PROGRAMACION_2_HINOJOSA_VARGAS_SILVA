@@ -9,21 +9,48 @@ public class Persona {
     public Persona(int id, String nombre, int edad, String genero,
                    String ubicacion, String estadoSalud) {
 
-        if (id <= 0)                          throw new IllegalArgumentException("ID debe ser positivo.");
-        if (nombre == null || nombre.isBlank())      throw new IllegalArgumentException("Nombre vacío.");
-        if (edad < 0 || edad > 120)                  throw new IllegalArgumentException("Edad fuera de rango.");
-        if (!genero.equalsIgnoreCase("Masculino") &&
-                !genero.equalsIgnoreCase("Femenino") &&
-                !genero.equalsIgnoreCase("Otro"))        throw new IllegalArgumentException("Género no válido.");
-        if (ubicacion == null || ubicacion.isBlank())    throw new IllegalArgumentException("Ubicación vacía.");
-        if (estadoSalud == null || estadoSalud.isBlank()) throw new IllegalArgumentException("Estado de salud vacío.");
+        this.id = (id > 0) ? id : 0;
+        if (id <= 0) {
+            System.out.println(" Advertencia: ID inválido, se estableció como 0.");
+        }
 
-        this.id = id;
-        this.nombre = nombre;
-        this.edad = edad;
-        this.genero = genero;
-        this.ubicacion = ubicacion;
-        this.estadoSalud = estadoSalud;
+        if (nombre == null || nombre.isBlank()) {
+            System.out.println(" Advertencia: Nombre vacío.");
+            this.nombre = "Sin nombre";
+        } else {
+            this.nombre = nombre;
+        }
+
+        if (edad < 0 || edad > 120) {
+            System.out.println(" Advertencia: Edad fuera de rango.");
+            this.edad = 0;
+        } else {
+            this.edad = edad;
+        }
+
+        if (genero == null ||
+                (!genero.equalsIgnoreCase("Masculino") &&
+                        !genero.equalsIgnoreCase("Femenino") &&
+                        !genero.equalsIgnoreCase("Otro"))) {
+            System.out.println("⚠ Advertencia: Género no válido. Se usará 'Otro'.");
+            this.genero = "Otro";
+        } else {
+            this.genero = genero;
+        }
+
+        if (ubicacion == null || ubicacion.isBlank()) {
+            System.out.println(" Advertencia: Ubicación vacía.");
+            this.ubicacion = "Desconocida";
+        } else {
+            this.ubicacion = ubicacion;
+        }
+
+        if (estadoSalud == null || estadoSalud.isBlank()) {
+            System.out.println(" Advertencia: Estado de salud vacío.");
+            this.estadoSalud = "No especificado";
+        } else {
+            this.estadoSalud = estadoSalud;
+        }
     }
 
     public void actualizarUbicacion(String nuevaUbicacion) {
