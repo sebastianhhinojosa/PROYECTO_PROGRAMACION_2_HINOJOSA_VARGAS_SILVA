@@ -28,4 +28,3 @@ public class Atencion {
                 id, tipo, fecha, institucion.getNombre(), encargadoSeguimiento);
     }
 }
-
