@@ -5,7 +5,7 @@ public class Atencion {
     private final String tipo;
     private final Date fecha;
     private final Institucion institucion;
-    private final String encargadoSeguimiento;   // NUEVO
+    private final String encargadoSeguimiento;
 
     public Atencion(int id, String tipo, Date fecha,
                     Institucion institucion, String encargadoSeguimiento) {

@@ -22,7 +22,7 @@ public class Main {
         int opcion;
         do {
             mostrarMenu();
-            opcion = leerEntero("");   // se sobreescribió la lectura insegura
+            opcion = leerEntero("");
             switch (opcion) {
                 case 1 -> registrarPersona();
                 case 2 -> registrarAtencion();
